@@ -1,7 +1,11 @@
 ﻿using GestionTicket.Models.Ticket;
 using GestionTicket.Repositories.Ticket;
 using GestionTicket.Repositories.User;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using System.ComponentModel.Design;
 
 namespace GestionTicket.Controllers
 {
@@ -15,19 +19,24 @@ namespace GestionTicket.Controllers
          _ticketRepository = ticketRepository;
       }
 
+      
+
       [HttpGet("")]
+      [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
       public IActionResult GetTicket()
       {
          return Ok(_ticketRepository.GetAllTickets());
       }
 
       [HttpGet("/{id}")]
+      [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
       public IActionResult GetTicket(int id)
       {
          return Ok(_ticketRepository.GetTicketsById(id));
       }
 
       [HttpPost("")]
+      [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
       public IActionResult CreateTicket(Ticket ticket)
       {
          _ticketRepository.CreateTicket(ticket);
@@ -35,6 +44,7 @@ namespace GestionTicket.Controllers
       }
 
       [HttpPut("/{id}/assign/{userId}")]
+      [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
       public IActionResult ModifyTicket(int id,int userId)
       {
          _ticketRepository.ModifyTicketOfUser(id,userId);
@@ -42,6 +52,7 @@ namespace GestionTicket.Controllers
       }
 
       [HttpDelete("{id}")]
+      [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
       public IActionResult DeleteTicket(int id)
       {
          _ticketRepository.DeleteTicketById(id);

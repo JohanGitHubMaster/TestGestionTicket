@@ -1,4 +1,5 @@
 ﻿using GestionTicket.Repositories.Ticket;
+using GestionTicket.Repositories.Token;
 using GestionTicket.Repositories.User;
 
 namespace GestionTicket
@@ -9,6 +10,7 @@ namespace GestionTicket
       {
          services.AddScoped<IUserRepository, UserRepository>();
          services.AddScoped<ITicketRepository, TicketRepository>();
+         services.AddScoped<Token>();
       }
    }
 }
