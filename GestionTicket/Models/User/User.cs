@@ -1,11 +1,14 @@
 ﻿
 namespace GestionTicket.Models.User;
 using GestionTicket.Models.Ticket;
+using NSwag.Annotations;
 
 public class User
 {
-   public required int Id { get; set; }
-   public required string UserName { get; set; }
-   public required string Email { get; set; }
-   public required List<Ticket>? Tickets { get; set; }
+
+   public int Id { get; set; }
+   public string? UserName { get; set; }
+   public string? Email { get; set; }
+   [SwaggerIgnore]
+   public List<Ticket>? Tickets { get; set; }
 }
