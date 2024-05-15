@@ -6,4 +6,5 @@ public interface IUserRepository
    void CreateUser(User user);
    void ModifyUser(int userId,User user);
    void RemoveUser(int userId);
+   int GetIdUserByName(string username);
 }

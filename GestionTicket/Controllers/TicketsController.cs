@@ -22,7 +22,7 @@ namespace GestionTicket.Controllers
       
 
       [HttpGet("")]
-      [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+      [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
       public IActionResult GetTicket()
       {
          return Ok(_ticketRepository.GetAllTickets());
@@ -36,7 +36,7 @@ namespace GestionTicket.Controllers
       }
 
       [HttpPost("")]
-      [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+      [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
       public IActionResult CreateTicket(Ticket ticket)
       {
          _ticketRepository.CreateTicket(ticket);
@@ -52,7 +52,7 @@ namespace GestionTicket.Controllers
       }
 
       [HttpDelete("{id}")]
-      [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+      [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
       public IActionResult DeleteTicket(int id)
       {
          _ticketRepository.DeleteTicketById(id);

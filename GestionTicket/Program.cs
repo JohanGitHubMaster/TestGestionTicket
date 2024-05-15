@@ -54,7 +54,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
           ValidateLifetime = true,
           ValidateIssuerSigningKey = true,
           ValidateIssuer = false,
-          IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("DhftOS5uphK3vmCJQrexST1RsjZBjXWRgJMFPU4"))
+          IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("MaCleSecreteHS512MaCleSecreteHS512MaCleSecreteHS512MaCleSecreteHS512"))
+
        };
     });
 builder.Services.AddAuthorization();

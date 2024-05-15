@@ -42,4 +42,9 @@ public class UserRepository : IUserRepository
               .Remove(usertodelete);
       _ticketManageContext.SaveChanges();
    }
+
+   public int GetIdUserByName(string username)
+   {
+      return _ticketManageContext.Users.FirstOrDefault(x=>x.UserName==username).Id;
+   }
 }
