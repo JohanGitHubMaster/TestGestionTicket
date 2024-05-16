@@ -55,12 +55,18 @@ namespace GestionTicket.Controllers
          return Ok();
       }
 
-      [HttpDelete("/{id}")]
+      [HttpDelete("/User/{id}")]
       [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
       public IActionResult DeleteUser(int id)
       {
          _userRepository.RemoveUser(id);
          return Ok();
+      }
+
+      [HttpGet("/Role/{id}")]
+      public IActionResult UserRole(int id)
+      {
+         return Ok(_rolerepository.getTypeRole(id));
       }
 
       [HttpGet("GetToken/{user}")]
@@ -69,12 +75,13 @@ namespace GestionTicket.Controllers
       {
          try
          {
-            int idUser = _userRepository.GetIdUserByName(user);
+            int? idUser = _userRepository.GetIdUserByName(user);
             string role = _rolerepository.getTypeRole(idUser);
             string token = _token.GenerateTokenAsync(role);
             var response = new
             {
-               Token = token
+               Token = token,
+               idUser = idUser
             };
             return Ok(response);
          }

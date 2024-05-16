@@ -1,0 +1,20 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+   Layout = null;
+
+}
+ @model GetionTicket.Web.Models.User.User
+
+<form asp-controller="User" asp-action="Login" method="post">
+   <h1>Login</h1>
+   <input type="text" placeholder="name" asp-for="UserName" />
+   <button type="submit">Login</button>
+   @if (ViewData["ValidateMessage"] != null)
+   {
+      <br />
+      <br />
+      <label>@ViewData["ValidateMessage"]</label>
+   }
+</form>

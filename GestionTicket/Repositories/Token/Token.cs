@@ -13,6 +13,8 @@ namespace GestionTicket.Repositories.Token
       {
          try
          {
+            if (userRole == null)
+               userRole = "User";
             // Clé correctement encodée en octets avec la longueur appropriée (512 bits)
             byte[] keyBytes = Encoding.UTF8.GetBytes("MaCleSecreteHS512MaCleSecreteHS512MaCleSecreteHS512MaCleSecreteHS512");
 

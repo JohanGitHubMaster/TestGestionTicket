@@ -1,0 +1,20 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+   ViewData["Title"] = "Ajout d'un Ticket";
+}
+@model GetionTicket.Web.Models.Ticket.Ticket
+<h1>Ajouter un nouveau Ticket</h1>
+<form asp-action="AddTicket" method="post">
+   <div>
+      <label for="username">titre du ticket:</label>
+      <input type="text"  asp-for="Title" required>
+      <label for="username">déscription du ticket:</label>
+      <input type="text" asp-for="Description" required>
+      <label for="username">status du ticket:</label>
+      <input type="text" asp-for="Status" required>
+   </div>
+   <button type="submit">Ajouter</button>
+</form>
+

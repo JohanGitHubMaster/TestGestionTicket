@@ -2,6 +2,6 @@
 {
    public interface IRoleRepository
    {
-      string getTypeRole(int idUser);
+      string getTypeRole(int? idUser);
    }
 }

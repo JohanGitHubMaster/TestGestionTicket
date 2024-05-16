@@ -9,8 +9,9 @@ namespace GestionTicket.Repositories.Role
       {
          _ticketManageContext = ticketManageContext;
       }
-      public string getTypeRole(int idUser)
+      public string getTypeRole(int? idUser)
       {
+         if (idUser == null) return null;
          return _ticketManageContext.Roles.FirstOrDefault(x => x.UserId == idUser).Types;
       }
    }
